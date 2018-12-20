@@ -126,8 +126,8 @@ public class Izvestaj {
 
   public void uplatiPrenos(JSONObject object) {
     PreparedStatement ps;
-    String query = " INSERT INTO Izvestaji "
-        + "(Platioc, mestoPlatioca, Primaoc, MestoPrimaoca, racunPlatioca, racunPrimaoca, svrhaUplate, sifrPlacanja, "
+    String query = "INSERT INTO Izvestaji "
+        + "(Platioc, mestoPlatioca, Primaoc, MestoPrimaoca, racunPlatioca, racunPrimaoca, svrhaPlacanja, sifraPlacanja, "
         + "iznos, modelZaduzenje, modelOdobrenje, pozivNaBrojZaduzenje, pozivNaBrojOdobrenje, date, virman) "
         + "VALUES "
         + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,'NALOG ZA PRENOS')";
@@ -136,12 +136,12 @@ public class Izvestaj {
       ps = db.conn.prepareStatement(query);
       ps.setString(1, object.getString("platioc"));
       ps.setString(2, object.getString("mestoPlatioca"));
-      ps.setString(3, object.getString("primalac"));
+      ps.setString(3, object.getString("primaoc"));
       ps.setString(4, object.getString("mestoPrimaoca"));
       ps.setString(5, object.getString("racunPlatioca"));
       ps.setString(6, object.getString("racunPrimaoca"));
-      ps.setInt(7, object.getInt("sifraPlacanja"));
-      ps.setString(8, object.getString("svrhaPlacanja"));
+      ps.setString(7, object.getString("svrhaPlacanja"));
+      ps.setString(8, object.getString("sifraPlacanja"));
       ps.setDouble(9, object.getDouble("iznos"));
       ps.setString(10, object.getString("modelZaduzenje"));
       ps.setString(11, object.getString("modelOdobrenje"));
