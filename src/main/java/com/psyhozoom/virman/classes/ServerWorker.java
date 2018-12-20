@@ -33,7 +33,7 @@ public class ServerWorker implements Runnable {
       if (isr == null) {
         System.out.println("socket oppened");
         try {
-          isr = new InputStreamReader(socket.getInputStream());
+          isr = new InputStreamReader(socket.getInputStream(), "UTF-8");
           bfr = new BufferedReader(isr);
 
         } catch (IOException e) {
@@ -123,7 +123,7 @@ public class ServerWorker implements Runnable {
   private void send(JSONObject object) {
     if (osw == null || bfw == null) {
       try {
-        osw = new OutputStreamWriter(socket.getOutputStream());
+        osw = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
         bfw = new BufferedWriter(osw);
       } catch (IOException e) {
         e.printStackTrace();
